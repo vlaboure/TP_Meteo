@@ -6,11 +6,22 @@ namespace TP_Meteo
 {
     public class StationMeteo
     {
-        //délégué utilisé pour manipuler l'évenement temps qui change
-        // Ici on déclare le délégué
-        public delegate void FaitIlBeau(Temps temps);        
-        public event FaitIlBeau QuandLeTempsChange;
+        /// <summary>
+        //              / OBSOLETE version ave delegate
+        /// </summary>
+        /// <param name="temps"></param>
+        //*****************************************
+            //délégué utilisé pour manipuler l'évenement temps qui change
+            // Ici on déclare le délégué
+            //public delegate void FaitIlBeau(Temps temps);
+            //public delegate void EstCeEte(Temperature temperature);
+            //public event EstCeEte TemperatureChange;
+            //public event FaitIlBeau QuandLeTempsChange;
         //*******************************************
+
+        /// <summary>
+        //              Utilisée Version avec Action/ 
+        /// </summary>
         public Action<Temps> QuandLeTempsChange_Act;
         public Action<Temperature> TemperatureChange_Act;
         // type nullable accés à une variable sans exception NullReferenceException et nlles méthodes disponibles....
@@ -18,7 +29,7 @@ namespace TP_Meteo
         private Temperature? ancienneTemperature;
         private int nbRepetitions;
         private Random random;
-
+        //*********************** Action remplace delegate et event
         
         public StationMeteo(int nbRepet)
         {
